@@ -64,7 +64,7 @@ adding a file adds a page at `/components/<slug>`. There's no list to update.
 A rule written in a doc or a prompt depends on someone reading it and remembering it. A
 lint error doesn't. When code breaks a rule, `npm run verify` fails and the message says
 what to do instead, so an agent that runs it keeps fixing until the code fits. That's why
-`CLAUDE.md` lists the rules under "enforced, not remembered" and asks that none be
+`AGENTS.md` lists the rules under "enforced, not remembered" and asks that none be
 silenced with an eslint-disable.
 
 ## What do the lint tests do?

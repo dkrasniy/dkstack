@@ -2,7 +2,7 @@
 
 dkstack is a React app starter built on `@dkrasniy/ui`, the component library in
 `packages/ui`. It comes with TanStack Router, TanStack Query, a feature-folder layout, strict
-lint rules and Claude skills already set up, plus a docs page for every component with its
+lint rules and agent skills already set up, plus a docs page for every component with its
 import line and code.
 
 The architecture is enforced, not described. When code breaks a rule, lint fails with a
@@ -26,7 +26,7 @@ pages, Team and Settings. To make it your own, follow
 ## Layout
 
 ```text
-.claude/skills/        standards Claude follows, loaded when they apply
+.claude/skills/        standards agents follow, loaded when they apply
 docs/                  overview, how-to and token reference
 packages/ui/           @dkrasniy/ui: components, styles, lib and hooks
 src/
@@ -71,8 +71,16 @@ into `packages/ui/src/components/` with the `base-luma` style. Then add its docs
 
 ## Skills
 
-`.claude/skills/` holds the standards Claude follows in this repo. `CLAUDE.md` says when
-each one applies.
+`.claude/skills/` holds the standards an agent follows in this repo. `AGENTS.md` says when
+each one applies, and `CLAUDE.md` imports it.
+
+If you don't use Claude Code, Cursor and Copilot read `.claude/skills/` as it is. Codex
+reads only `.agents/skills/`, so link the skills there once:
+
+```sh
+mkdir -p .agents/skills
+for skill in .claude/skills/*; do ln -s "../../$skill" .agents/skills/; done
+```
 
 - **better-ui**, **better-layout**, **better-typography**, **better-colors**,
   **better-accessibility** and **better-writing** cover building and reviewing UI.
