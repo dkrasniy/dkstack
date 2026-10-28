@@ -1,0 +1,485 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import '@fontsource-variable/inter';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter Variable', sans-serif;
+
+  --color-frame: var(--frame);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle-foreground: var(--subtle-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-solid: var(--success-solid);
+  --color-success-solid-foreground: var(--success-solid-foreground);
+  --color-warning: var(--warning);
+  --color-attention: var(--attention);
+  --color-attention-foreground: var(--attention-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-purple: var(--purple);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-float: var(--shadow-float);
+  --shadow-overlay: var(--shadow-overlay);
+  --shadow-input: var(--shadow-input);
+  --shadow-btn: var(--shadow-btn);
+  --shadow-solid: var(--shadow-solid);
+  --shadow-focus:
+    0 0 0 1.5px var(--ring), 0 2px 3px -1px oklch(0 0 0 / 0.04),
+    0 3px 4px -1.5px oklch(0 0 0 / 0.04);
+  --shadow-invalid:
+    0 0 0 1.5px var(--destructive), 0 2px 3px -1px oklch(0 0 0 / 0.04),
+    0 3px 4px -1.5px oklch(0 0 0 / 0.04);
+}
+
+/* The scales are cleared first, so a size or radius outside them produces no CSS. Line
+   heights sit on a 0.25rem grid except fine print, and tracking tightens as Inter grows. */
+@theme {
+  --text-*: initial;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.4;
+  --text-xs--letter-spacing: 0;
+  --text-13: 0.8125rem;
+  --text-13--line-height: 1.125rem;
+  --text-13--letter-spacing: -0.003em;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-sm--letter-spacing: -0.006em;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5rem;
+  --text-base--letter-spacing: -0.011em;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.5rem;
+  --text-lg--letter-spacing: -0.012em;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-xl--letter-spacing: -0.015em;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-2xl--letter-spacing: -0.019em;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-3xl--letter-spacing: -0.021em;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+  --text-4xl--letter-spacing: -0.022em;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1;
+  --text-5xl--letter-spacing: -0.024em;
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1;
+  --text-6xl--letter-spacing: -0.026em;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1;
+  --text-7xl--letter-spacing: -0.028em;
+
+  --radius-*: initial;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-pill: 9999px;
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  /* A damped spring that overshoots 1.5% and settles in 480ms. */
+  --ease-settle: linear(
+    0,
+    0.086,
+    0.267,
+    0.464,
+    0.639,
+    0.776,
+    0.875,
+    0.941,
+    0.981,
+    1.003,
+    1.012,
+    1.015,
+    1.014,
+    1.011,
+    1.008,
+    1.006,
+    1
+  );
+
+  --ease-bounce: linear(
+    0,
+    0.092,
+    0.301,
+    0.545,
+    0.767,
+    0.939,
+    1.052,
+    1.11,
+    1.126,
+    1.114,
+    1.088,
+    1.057,
+    1.029,
+    1.008,
+    0.993,
+    0.986,
+    0.984,
+    0.986,
+    0.989,
+    0.993,
+    0.996,
+    0.999,
+    1.001,
+    1
+  );
+
+  --animate-dissolve-in: dissolve-in 150ms ease 25ms both;
+  --animate-dissolve-out: dissolve-out 100ms ease both;
+  --animate-panel-in: panel-in 180ms ease 30ms both;
+  --animate-panel-out: dissolve-out 120ms ease both;
+  --animate-shimmer: shimmer 1.8s linear infinite;
+  --animate-sheet-up: sheet-up 360ms var(--ease-smooth) backwards;
+  --animate-sheet-down: sheet-down 290ms var(--ease-smooth) forwards;
+  --animate-pop-in: pop-in 200ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-rise-in: rise-in 180ms var(--ease-smooth) both;
+  --animate-dots: dots 1.2s infinite;
+
+  @keyframes dots {
+    50% {
+      opacity: 0.2;
+    }
+  }
+
+  @keyframes sheet-up {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes sheet-down {
+    to {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+
+  @keyframes shimmer {
+    from {
+      background-position: 100% 0;
+    }
+    to {
+      background-position: 0 0;
+    }
+  }
+
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      translate: 0 2px;
+    }
+  }
+  @keyframes dissolve-in {
+    from {
+      opacity: 0;
+      scale: 0.97;
+    }
+  }
+  @keyframes dissolve-out {
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+:root {
+  color-scheme: light;
+  --frame: oklch(0.961 0 0);
+  --background: oklch(0.991 0 0);
+  --foreground: oklch(0.159 0 0);
+  --card: oklch(1 0 0);
+  --popover: oklch(1 0 0);
+  --muted: oklch(0.967 0 0);
+  --muted-foreground: oklch(0.531 0 0);
+  --subtle-foreground: oklch(0.566 0 0);
+  --border: oklch(0.94 0 0);
+  --destructive: oklch(0.575 0.236 29.23);
+  --success: oklch(0.6149 0.2058 142.87);
+  --success-solid: oklch(0.517 0.173 142.88);
+  --success-solid-foreground: oklch(1 0 0);
+  --warning: oklch(0.6767 0.1971 43.92);
+  --attention: oklch(0.907 0.167 97.42);
+  --attention-foreground: oklch(0.367 0.075 92.1);
+  --brand: oklch(0.5629 0.1933 256.16);
+  --primary: oklch(0.5629 0.1933 256.16);
+  --primary-foreground: oklch(1 0 0);
+  --purple: oklch(0.546 0.188 286.65);
+
+  --shadow-card:
+    0 0 0 0.5px oklch(0 0 0 / 0.06), 0 1px 1px -1px oklch(0 0 0 / 0.1),
+    0 1px 2px oklch(0 0 0 / 0.05);
+  --shadow-input:
+    0 0 0 1px oklch(0 0 0 / 0.13), 0 2px 3px -1px oklch(0 0 0 / 0.04),
+    0 3px 4px -1.5px oklch(0 0 0 / 0.04);
+  --shadow-float:
+    0 0 0 0.5px oklch(0 0 0 / 0.07), 0 2px 3px -2px oklch(0 0 0 / 0.06),
+    0 3px 12px -4px oklch(0 0 0 / 0.1), 0 4px 16px -8px oklch(0 0 0 / 0.05);
+  --shadow-btn:
+    0 0 0 1px oklch(0 0 0 / 0.06), 0 1px 1px oklch(0 0 0 / 0.04),
+    0 6px 8px -6px oklch(0 0 0 / 0.08);
+  --shadow-solid: inset 0 1px 0 oklch(1 0 0 / 0.12), 0 1px 2px oklch(0 0 0 / 0.08);
+  --shadow-overlay:
+    0 0 0 0.5px oklch(0 0 0 / 0.06), 0 8px 40px oklch(0 0 0 / 0.05),
+    0 12px 32px -16px oklch(0 0 0 / 0.15);
+}
+
+.dark {
+  color-scheme: dark;
+  --frame: oklch(0.168 0 0);
+  --background: oklch(0.222 0 0);
+  --foreground: oklch(0.943 0 0);
+  /* A shadow barely shows on a dark page, so a popover sits one step lighter instead. */
+  --popover: oklch(0.252 0 0);
+  --card: var(--background);
+  --muted: oklch(0.285 0 0);
+  --muted-foreground: oklch(0.725 0 0);
+  --subtle-foreground: oklch(0.657 0 0);
+  --border: oklch(0.285 0 0);
+  --destructive: oklch(0.663 0.224 28.29);
+  --success: oklch(0.739 0.179 148.05);
+  --success-solid: oklch(0.517 0.173 142.88);
+  --success-solid-foreground: oklch(1 0 0);
+  --warning: oklch(0.862 0.151 85.01);
+  --attention: oklch(0.363 0.071 94.64);
+  --attention-foreground: oklch(0.916 0.128 94.13);
+  --brand: oklch(0.669 0.181 251.84);
+  --purple: oklch(0.723 0.144 290.03);
+
+  --shadow-card: 0 0 0 1px oklch(1 0 0 / 0.08);
+  --shadow-input: 0 0 0 1px oklch(1 0 0 / 0.1);
+  --shadow-float:
+    0 0 0 1px oklch(1 0 0 / 0.12), 0 2px 6px oklch(0 0 0 / 0.2),
+    0 4px 42px oklch(0 0 0 / 0.3);
+  --shadow-btn: 0 0 0 1px oklch(1 0 0 / 0.08);
+  --shadow-solid: 0 0 #0000;
+  --shadow-overlay:
+    0 0 0 1px oklch(1 0 0 / 0.12), 0 2px 6px oklch(0 0 0 / 0.2),
+    0 4px 42px oklch(0 0 0 / 0.3);
+}
+
+/* The names shadcn components reach for, mapped onto the colours above. They're declared
+   on .dark as well, so they resolve to its values wherever .dark is set. */
+:root,
+.dark {
+  --card-foreground: var(--foreground);
+  --popover-foreground: var(--foreground);
+  --destructive-foreground: oklch(1 0 0);
+  --secondary: var(--muted);
+  --secondary-foreground: var(--foreground);
+  --accent: var(--muted);
+  --accent-foreground: var(--foreground);
+  --input: var(--border);
+  --ring: var(--brand);
+
+  /* A tint rather than muted, which is almost the same grey as the frame the sidebar sits on. */
+  --sidebar: var(--frame);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--foreground);
+  --sidebar-primary-foreground: var(--background);
+  --sidebar-accent: color-mix(in srgb, var(--foreground) 5%, transparent);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  --ai-1: oklch(0.673 0.233 1.92);
+  --ai-2: oklch(0.687 0.203 27.79);
+  --ai-3: oklch(0.7252 0.1857 49.1);
+}
+
+[data-shape='soft'] {
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-pill: 10px;
+}
+
+[data-shape='sharp'] {
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
+  --radius-pill: 6px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    @apply antialiased;
+  }
+
+  html,
+  body {
+    @apply bg-sidebar;
+  }
+
+  body {
+    @apply text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Confetti, in three layers so each axis has its own physics: <i> drifts sideways and
+   slows like air drag, <b> rises then falls under gravity, <s> tumbles like paper. */
+.confetti {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  pointer-events: none;
+}
+.confetti i {
+  position: absolute;
+  animation:
+    confetti-drift var(--dur) cubic-bezier(0.04, 0.78, 0.2, 1) var(--delay) both,
+    confetti-fade var(--dur) ease-in var(--delay) both;
+}
+.confetti b {
+  display: block;
+  animation: confetti-arc var(--dur) linear var(--delay) both;
+}
+.confetti s {
+  display: block;
+  translate: -50% -50%;
+  animation: confetti-tumble var(--dur) linear var(--delay) both;
+}
+@keyframes confetti-drift {
+  to {
+    transform: translateX(var(--dx));
+  }
+}
+@keyframes confetti-arc {
+  0% {
+    transform: translateY(0) scale(0.3);
+    animation-timing-function: cubic-bezier(0.1, 0.85, 0.3, 1);
+  }
+  6% {
+    transform: translateY(calc(var(--apex) * 0.58)) scale(1.15);
+    animation-timing-function: cubic-bezier(0.15, 0.65, 0.35, 1);
+  }
+  32% {
+    transform: translateY(var(--apex)) scale(1);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.85, 0.5);
+  }
+  100% {
+    transform: translateY(var(--fall)) scale(1);
+  }
+}
+@keyframes confetti-tumble {
+  from {
+    transform: rotate(var(--r0)) rotateX(0deg);
+  }
+  to {
+    transform: rotate(calc(var(--r0) + var(--spin))) rotateX(var(--flip));
+  }
+}
+@keyframes confetti-fade {
+  0%,
+  72% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .confetti {
+    display: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class*='fade-up'] {
+    animation: none !important;
+  }
+}

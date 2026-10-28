@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dkstack</title>
+    <meta name="description" content="A React app starter built on @dkrasniy/ui." />
+    <script>
+      try {
+        const appearance = localStorage.getItem('app:appearance')
+        const system = matchMedia('(prefers-color-scheme: dark)').matches
+        if (appearance === 'dark' || (appearance === 'system' && system))
+          document.documentElement.classList.add('dark')
+        const shape = localStorage.getItem('app:shape')
+        if (shape === 'soft' || shape === 'sharp')
+          document.documentElement.dataset.shape = shape
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
